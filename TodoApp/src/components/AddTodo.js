@@ -21,9 +21,9 @@ function AddTodo() {
   );
 
   const onPress = () => {
-    setText('');
+    setText("");
     Keyboard.dismiss();
-  }
+  };
   return (
     <View style={styles.block}>
       <TextInput
@@ -35,10 +35,16 @@ function AddTodo() {
         returnKeyType="done"
       />
       {Platform.select({
-        ios: <TouchableOpacity activeOpacity={0.5} onPress={onPress}>{button}</TouchableOpacity>,
+        ios: (
+          <TouchableOpacity activeOpacity={0.5} onPress={onPress}>
+            {button}
+          </TouchableOpacity>
+        ),
         android: (
           <View style={styles.circleWrapper}>
-            <TouchableNativeFeedback onPress={onPress}>{button}</TouchableNativeFeedback>
+            <TouchableNativeFeedback onPress={onPress}>
+              {button}
+            </TouchableNativeFeedback>
           </View>
         ),
       })}
