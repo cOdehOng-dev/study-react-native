@@ -1,18 +1,15 @@
-import { StatusBar } from "expo-status-bar";
+import { useEffect, useState } from "react";
 import {
-  Alert,
   KeyboardAvoidingView,
   Platform,
-  StyleSheet,
-  Text,
-  View,
+  StyleSheet
 } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import DateHead from "./src/components/DateHead";
 import AddTodo from "./src/components/AddTodo";
+import DateHead from "./src/components/DateHead";
 import Empty from "./src/components/Empty";
-import { useState } from "react";
 import TodoList from "./src/components/TodoList";
+import todosStorages from "./storages/todosStorages";
 
 function App() {
   const today = new Date();
@@ -21,6 +18,22 @@ function App() {
     { id: 2, text: "운동하기", done: true },
     { id: 3, text: "점심 먹기", done: false },
   ]);
+
+  /**
+   * 불러오기
+   * 마운트 시 딱 한번만 실행
+   *
+   */
+  useEffect(() => {
+    todosStorages.get().then(setTodos).catch(console.error);
+  }, []);
+
+  /**
+   * todos가 변경될 때마다 실행
+   */
+  useEffect(() => {
+    todosStorages.set(todos).catch(console.error);
+  }, [todos]);
 
   const onInsert = (text) => {
     const nextId =
