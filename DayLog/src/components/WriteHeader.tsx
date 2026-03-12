@@ -1,11 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { RootStackNavigationProp } from '../navigationstack';
+import { MainTabNavigationProp } from '../screens/MainTab';
 import TransParentCircleButton from './TransParentCircleButton';
 
-const WriteHeader = () => {
-  const navigation = useNavigation<RootStackNavigationProp>();
+function WriteHeader({ onSave }: { onSave: () => void }) {
+  const navigation = useNavigation<MainTabNavigationProp>();
   const onGoBack = () => {
     navigation.pop();
   };
@@ -26,11 +26,15 @@ const WriteHeader = () => {
           color="#ef5350"
           hasMarginRight
         />
-        <TransParentCircleButton name="check" color="#009688" />
+        <TransParentCircleButton
+          name="check"
+          color="#009688"
+          onPress={onSave}
+        />
       </View>
     </View>
   );
-};
+}
 
 export default WriteHeader;
 

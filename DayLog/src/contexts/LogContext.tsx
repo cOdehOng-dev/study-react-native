@@ -1,23 +1,52 @@
-import { createContext, Dispatch, ReactNode, SetStateAction, useState } from 'react';
+import { createContext, ReactNode, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-// Context에 담길 값의 타입 정의
 type LogContextType = {
-  logs: string[];
-  setLogs: Dispatch<SetStateAction<string[]>>;
-}
+  logs: LogProps[];
+  onCreate: (log: LogProps) => void;
+};
 
-// createContext 초기값을 undefined로 설정 (실제 값은 Provider에서 주입)
-const LogContext = createContext<LogContextType>({} as LogContextType);
+export type LogProps = {
+  id: string;
+  title: string;
+  body: string;
+  date: string;
+};
 
-type Props = {
-  children: ReactNode;
-}
+const LogContext = createContext<LogContextType>({
+  logs: [],
+  onCreate: () => {},
+});
 
-export function LogContextProvider({ children }: Props) {
-  const [logs, setLogs] = useState<string[]>([]);
+export function LogContextProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [logs, setLogs] = useState<LogProps[]>(
+    Array.from({ length: 10 })
+      .map((_, index) => ({
+        id: uuidv4(),
+        title: `제목 ${index + 1}`,
+        body: `내용 ${index + 1}`,
+        date: new Date().toISOString(),
+      }))
+      .reverse(),
+  );
+
+  const onCreate = ({ id, title, body, date }: LogProps) => {
+    const log = {
+      id,
+      title,
+      body,
+      date,
+    };
+
+    setLogs([log, ...logs]);
+  };
 
   return (
-    <LogContext.Provider value={{ logs, setLogs }}>
+    <LogContext.Provider value={{ logs, onCreate }}>
       {children}
     </LogContext.Provider>
   );
