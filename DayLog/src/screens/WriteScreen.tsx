@@ -1,17 +1,18 @@
-import { useNavigation } from '@react-navigation/native';
 import React, { useContext, useState } from 'react';
 import { KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { v4 as uuidv4 } from 'uuid';
 import WriteEditor from '../components/WriteEditor';
 import WriteHeader from '../components/WriteHeader';
 import LogContext from '../contexts/LogContext';
-import { MainTabNavigationProp } from './MainTab';
-import { v4 as uuidv4 } from 'uuid';
+import { RootStackScreenProps } from './RootStack';
 
-function WriteScreen() {
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
-  const navigation = useNavigation<MainTabNavigationProp>();
+type Prop = RootStackScreenProps<'Write'>;
+
+function WriteScreen({ route, navigation }: Prop) {
+  const log = route.params?.log;
+  const [title, setTitle] = useState(log?.title ?? '');
+  const [body, setBody] = useState(log?.body ?? '');
 
   const { onCreate } = useContext(LogContext);
 

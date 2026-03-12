@@ -1,14 +1,14 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useRef } from 'react';
-import { Animated, Platform, Pressable, StyleSheet, View } from 'react-native';
+import { Animated, Platform, Pressable, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { MainTabNavigationProp } from '../screens/MainTab';
+import { RootStackNavigationProp } from '../screens/RootStack';
 
 function FloatingWriteButton({ hidden }: { hidden: boolean }) {
-  const navigation = useNavigation<MainTabNavigationProp>();
+  const navigation = useNavigation<RootStackNavigationProp>();
 
   const onPress = () => {
-    navigation.navigate('Write');
+    navigation.navigate('Write', {});
   };
 
   const animation = useRef(new Animated.Value(0)).current;

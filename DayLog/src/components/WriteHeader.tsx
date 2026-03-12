@@ -1,11 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { MainTabNavigationProp } from '../screens/MainTab';
+import { RootStackNavigationProp } from '../screens/RootStack';
 import TransParentCircleButton from './TransParentCircleButton';
 
 function WriteHeader({ onSave }: { onSave: () => void }) {
-  const navigation = useNavigation<MainTabNavigationProp>();
+  const navigation = useNavigation<RootStackNavigationProp>();
   const onGoBack = () => {
     navigation.pop();
   };
