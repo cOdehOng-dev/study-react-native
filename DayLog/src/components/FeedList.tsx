@@ -8,7 +8,7 @@ function FeedList({
   onScrolledToBottom,
 }: {
   logs: LogProps[];
-  onScrolledToBottom: (isBottom: boolean) => void;
+  onScrolledToBottom?: (isBottom: boolean) => void;
 }) {
   const onScroll = e => {
     if (!onScrolledToBottom) {

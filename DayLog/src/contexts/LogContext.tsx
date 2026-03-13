@@ -1,9 +1,11 @@
 import { createContext, ReactNode, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-type LogContextType = {
+type LogContextProps = {
   logs: LogProps[];
   onCreate: (log: LogProps) => void;
+  onModify: (log: LogProps) => void;
+  onRemove: (id: string) => void;
 };
 
 export type LogProps = {
@@ -13,9 +15,11 @@ export type LogProps = {
   date: string;
 };
 
-const LogContext = createContext<LogContextType>({
+const LogContext = createContext<LogContextProps>({
   logs: [],
   onCreate: () => {},
+  onModify: () => {},
+  onRemove: () => {},
 });
 
 export function LogContextProvider({
@@ -45,8 +49,20 @@ export function LogContextProvider({
     setLogs([log, ...logs]);
   };
 
+  const onModify = (modified: LogProps) => {
+    const nextLLogs = logs.map(log =>
+      log.id === modified.id ? modified : log,
+    );
+    setLogs(nextLLogs);
+  };
+
+  const onRemove = (id: string) => {
+    const nextLogs = logs.filter(log => log.id !== id);
+    setLogs(nextLogs);
+  };
+
   return (
-    <LogContext.Provider value={{ logs, onCreate }}>
+    <LogContext.Provider value={{ logs, onCreate, onModify, onRemove }}>
       {children}
     </LogContext.Provider>
   );

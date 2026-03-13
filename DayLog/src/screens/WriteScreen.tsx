@@ -1,5 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
+import {
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { v4 as uuidv4 } from 'uuid';
 import WriteEditor from '../components/WriteEditor';
@@ -14,15 +19,49 @@ function WriteScreen({ route, navigation }: Prop) {
   const [title, setTitle] = useState(log?.title ?? '');
   const [body, setBody] = useState(log?.body ?? '');
 
-  const { onCreate } = useContext(LogContext);
+  const { onCreate, onModify, onRemove } = useContext(LogContext);
+
+  const onAskRemove = () => {
+    Alert.alert(
+      '삭제',
+      '정말로 삭제하시겠습니까?',
+      [
+        {
+          text: '취소',
+          style: 'cancel',
+        },
+        {
+          text: '삭제',
+          style: 'destructive',
+          onPress: () => {
+            onRemove(log!.id);
+            navigation.pop();
+          },
+        },
+      ],
+      {
+        cancelable: true,
+      },
+    );
+  };
 
   const onSave = () => {
-    onCreate({
-      id: uuidv4(),
-      title,
-      body,
-      date: new Date().toISOString(),
-    });
+    if (log) {
+      // log이 존재한다면 수정, 없다면 새로 작성
+      onModify({
+        id: log.id,
+        date: log.date,
+        title,
+        body,
+      });
+    } else {
+      onCreate({
+        id: uuidv4(),
+        title,
+        body,
+        date: new Date().toISOString(),
+      });
+    }
     navigation.pop();
   };
 
@@ -32,7 +71,11 @@ function WriteScreen({ route, navigation }: Prop) {
         style={styles.avoidingView}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       >
-        <WriteHeader onSave={onSave} />
+        <WriteHeader
+          onSave={onSave}
+          onAskRemove={onAskRemove}
+          isEditing={!!log}
+        />
         <WriteEditor
           title={title}
           body={body}

@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import CalendarScreen from './CalendarScreen';
 import FeedsScreen from './FeedsScreen';
 import SearchScreen from './SearchScreen';
+import SearchHeader from '../components/SearchHeader';
 
 type MainTabParamList = {
   Feeds: undefined;
@@ -51,6 +52,7 @@ function MainTab() {
           tabBarIcon: ({ color, size }) => (
             <Icon name="search" color={color} size={size} />
           ),
+          headerTitle: () => <SearchHeader />,
         }}
       />
     </Tab.Navigator>

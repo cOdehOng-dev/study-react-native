@@ -4,7 +4,13 @@ import { StyleSheet, View } from 'react-native';
 import { RootStackNavigationProp } from '../screens/RootStack';
 import TransParentCircleButton from './TransParentCircleButton';
 
-function WriteHeader({ onSave }: { onSave: () => void }) {
+type Props = {
+  onSave: () => void;
+  onAskRemove: () => void;
+  isEditing: boolean;
+};
+
+function WriteHeader({ onSave, onAskRemove, isEditing }: Props) {
   const navigation = useNavigation<RootStackNavigationProp>();
   const onGoBack = () => {
     navigation.pop();
@@ -21,11 +27,15 @@ function WriteHeader({ onSave }: { onSave: () => void }) {
       </View>
 
       <View style={styles.buttons}>
-        <TransParentCircleButton
-          name="delete-forever"
-          color="#ef5350"
-          hasMarginRight
-        />
+        {isEditing && (
+          <TransParentCircleButton
+            name="delete-forever"
+            color="#ef5350"
+            hasMarginRight
+            onPress={onAskRemove}
+          />
+        )}
+
         <TransParentCircleButton
           name="check"
           color="#009688"
