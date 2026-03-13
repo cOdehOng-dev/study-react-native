@@ -1797,6 +1797,30 @@ PODS:
     - ReactNativeDependencies
   - ReactAppDependencyProvider (0.84.1):
     - ReactCodegen
+  - ReactBrownfield (3.0.0):
+    - hermes-engine
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-Core-prebuilt
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTAppDelegate
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactAppDependencyProvider
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - ReactNativeDependencies
+    - Yoga
   - ReactCodegen (0.84.1):
     - hermes-engine
     - RCTRequired
@@ -1854,6 +1878,28 @@ PODS:
     - React-utils (= 0.84.1)
     - ReactNativeDependencies
   - ReactNativeDependencies (0.84.1)
+  - RNVectorIcons (10.3.0):
+    - hermes-engine
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-Core-prebuilt
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - ReactNativeDependencies
+    - Yoga
   - Yoga (0.0.0)
 
 DEPENDENCIES:
@@ -1928,9 +1974,11 @@ DEPENDENCIES:
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - React-webperformancenativemodule (from `../node_modules/react-native/ReactCommon/react/nativemodule/webperformance`)
   - ReactAppDependencyProvider (from `build/generated/ios/ReactAppDependencyProvider`)
+  - "ReactBrownfield (from `../node_modules/@callstack/react-native-brownfield`)"
   - ReactCodegen (from `build/generated/ios/ReactCodegen`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - ReactNativeDependencies (from `../node_modules/react-native/third-party-podspecs/ReactNativeDependencies.podspec`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 EXTERNAL SOURCES:
@@ -2075,12 +2123,16 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/webperformance"
   ReactAppDependencyProvider:
     :path: build/generated/ios/ReactAppDependencyProvider
+  ReactBrownfield:
+    :path: "../node_modules/@callstack/react-native-brownfield"
   ReactCodegen:
     :path: build/generated/ios/ReactCodegen
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
   ReactNativeDependencies:
     :podspec: "../node_modules/react-native/third-party-podspecs/ReactNativeDependencies.podspec"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -2155,11 +2207,13 @@ SPEC CHECKSUMS:
   React-utils: 8d888b379f0808bfabaea03d85f9e8dd9b8548da
   React-webperformancenativemodule: c10016db7f1bb1153060d4aa9f7dbde2c88c845d
   ReactAppDependencyProvider: e96e93b493d8d86eeaee3e590ba0be53f6abe46f
+  ReactBrownfield: e6f51ea06d50fd6bc4a45935acd736f6a3ee8cc9
   ReactCodegen: 797de5178718324c6eba3327b07f9a423fbd5787
   ReactCommon: 07572bf9e687c8a52fbe4a3641e9e3a1a477c78e
   ReactNativeDependencies: b7b157849da34799ba2fb1d66a06c294c260e048
+  RNVectorIcons: 4351544f100d4f12cac156a7c13399e60bab3e26
   Yoga: c0b3f2c7e8d3e327e450223a2414ca3fa296b9a2
 
 PODFILE CHECKSUM: 699fd72b9ad79ba2147687c9f38996eddf4808a1
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

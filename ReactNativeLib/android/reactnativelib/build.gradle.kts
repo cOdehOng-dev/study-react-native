@@ -65,7 +65,7 @@ publishing {
         create<MavenPublication>("mavenAar") {
             groupId = "com.interpark.library"
             artifactId = "reactnativelib"
-            version = "0.0.11-local"
+            version = "0.0.17-local"
             afterEvaluate {
                 from(components.getByName("default"))
             }
