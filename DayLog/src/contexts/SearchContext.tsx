@@ -13,7 +13,7 @@ const SearchContext = createContext<SearchContextProps>({
 export function SearchContextProvider({ children }: { children: ReactNode }) {
   const [keyword, setKeyword] = useState('');
 
-  const onChangeKeyword = keyword => {
+  const onChangeKeyword = (keyword: string) => {
     setKeyword(keyword);
   };
 

@@ -55,8 +55,8 @@ android {
 dependencies {
     // Match your version of React Native
     api("com.facebook.react:react-android:0.84.1")
-    // For React Native 0.83+:
-    api("com.facebook.hermes:hermes-android:0.14.0")
+    // For React Native 0.84+:
+    api("com.facebook.hermes:hermes-android:0.15.1")
 }
 
 
@@ -65,7 +65,7 @@ publishing {
         create<MavenPublication>("mavenAar") {
             groupId = "com.interpark.library"
             artifactId = "reactnativelib"
-            version = "0.0.17-local"
+            version = "0.0.21-local"
             afterEvaluate {
                 from(components.getByName("default"))
             }
