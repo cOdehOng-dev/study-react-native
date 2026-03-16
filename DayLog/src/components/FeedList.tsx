@@ -6,9 +6,15 @@ import FeedListItem from './FeedListItem';
 function FeedList({
   logs,
   onScrolledToBottom,
+  ListHeaderComponent,
 }: {
   logs: LogProps[];
   onScrolledToBottom?: (isBottom: boolean) => void;
+  ListHeaderComponent?:
+    | React.ComponentType<any>
+    | React.ReactElement
+    | null
+    | undefined;
 }) {
   const onScroll = e => {
     if (!onScrolledToBottom) {
@@ -30,8 +36,9 @@ function FeedList({
       style={styles.block}
       renderItem={({ item }) => <FeedListItem log={item} />}
       keyExtractor={log => log.id}
-      ItemSeparatorComponent={() => <View style={styles.separator} />}
       onScroll={onScroll}
+      ItemSeparatorComponent={() => <View style={styles.separator} />}
+      ListHeaderComponent={ListHeaderComponent}
     />
   );
 }

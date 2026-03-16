@@ -1,23 +1,33 @@
 import { StyleSheet, Text } from 'react-native';
 import React from 'react';
 import { Calendar } from 'react-native-calendars';
+import { da } from 'date-fns/locale';
 
-function CalendarView() {
-  const markedDates = {
-    '2026-03-17': {
+type Props = {
+  markedDates: {
+    [date: string]: {
+      marked?: boolean;
+    };
+  };
+  selectedDate: string;
+  onSelectedDate: (date: string) => void;
+};
+
+function CalendarView({ markedDates, selectedDate, onSelectedDate }: Props) {
+  const markedSelectedDate = {
+    ...markedDates,
+    [selectedDate]: {
       selected: true,
-    },
-    '2026-03-18': {
-      marked: true,
-    },
-    '2026-03-19': {
-      marked: true,
+      marked: markedDates[selectedDate]?.marked,
     },
   };
   return (
     <Calendar
       style={styles.calendar}
-      markedDates={markedDates}
+      markedDates={markedSelectedDate}
+      onDayPress={day => {
+        onSelectedDate(day.dateString);
+      }}
       renderArrow={direction => (
         <Text style={{ color: '#009688', fontSize: 18 }}>
           {direction === 'left' ? '‹' : '›'}

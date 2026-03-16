@@ -10,14 +10,17 @@ import { v4 as uuidv4 } from 'uuid';
 import WriteEditor from '../components/WriteEditor';
 import WriteHeader from '../components/WriteHeader';
 import LogContext from '../contexts/LogContext';
-import { RootStackScreenProps } from './RootStack';
+import { RootStackNavigationProp, RootStackScreenProps } from './RootStack';
+import { useNavigation } from '@react-navigation/native';
 
 type Prop = RootStackScreenProps<'Write'>;
 
-function WriteScreen({ route, navigation }: Prop) {
+function WriteScreen({ route }: Prop) {
   const log = route.params?.log;
   const [title, setTitle] = useState(log?.title ?? '');
   const [body, setBody] = useState(log?.body ?? '');
+  const navigation = useNavigation<RootStackNavigationProp>();
+  const [date, setDate] = useState(log ? new Date(log.date) : new Date());
 
   const { onCreate, onModify, onRemove } = useContext(LogContext);
 
@@ -50,7 +53,7 @@ function WriteScreen({ route, navigation }: Prop) {
       // log이 존재한다면 수정, 없다면 새로 작성
       onModify({
         id: log.id,
-        date: log.date,
+        date: date.toISOString(),
         title,
         body,
       });
@@ -59,7 +62,7 @@ function WriteScreen({ route, navigation }: Prop) {
         id: uuidv4(),
         title,
         body,
-        date: new Date().toISOString(),
+        date: date.toISOString(),
       });
     }
     navigation.pop();
@@ -75,6 +78,8 @@ function WriteScreen({ route, navigation }: Prop) {
           onSave={onSave}
           onAskRemove={onAskRemove}
           isEditing={!!log}
+          date={date}
+          onChangeDate={setDate}
         />
         <WriteEditor
           title={title}
