@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "501074979574",
+    "firebase_url": "https://project-8038e.firebaseio.com",
+    "project_id": "project-8038e",
+    "storage_bucket": "project-8038e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:501074979574:android:ed561fcdb387f299841ad7",
+        "android_client_info": {
+          "package_name": "com.publicgallerycodehong"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "501074979574-6k0c4p8mhm3j1npoevnn3r28jvr1l51b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVoIBQJtXHZDBNNqrzdqe8SVFOzpi--RY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "501074979574-6k0c4p8mhm3j1npoevnn3r28jvr1l51b.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "501074979574-ulla05bt73qu19399mjd3vad4i8m45ak.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.PublicGalleryCodeHong"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
