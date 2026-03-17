@@ -5,9 +5,11 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { RootStackNavigationProp } from '../screens/RootStack';
 
 function FloatingWriteButton({ hidden }: { hidden: boolean }) {
+  // RootStackNavigationProp을 제네릭으로 전달해 navigate 호출 시 타입 검사
   const navigation = useNavigation<RootStackNavigationProp>();
 
   const onPress = () => {
+    // Write 화면으로 이동하되 log를 전달하지 않음 → WriteScreen에서 새 글 작성 모드로 동작
     navigation.navigate('Write', {});
   };
 

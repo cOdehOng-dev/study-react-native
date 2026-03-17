@@ -43,8 +43,10 @@ function WriteHeader({
   date,
   onChangeDate,
 }: Props) {
+  // RootStackNavigationProp을 제네릭으로 전달해 pop 등 네비게이션 메서드의 타입 안전성 확보
   const navigation = useNavigation<RootStackNavigationProp>();
   const onGoBack = () => {
+    // 뒤로가기 버튼 누를 때 Write 화면을 스택에서 제거하고 이전 화면(MainTab)으로 돌아감
     navigation.pop();
   };
 

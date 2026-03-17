@@ -32,8 +32,10 @@ function truncate(text: string) {
 
 function FeedListItem({ log }: { log: LogProps }) {
   const { title, body, date } = log;
+  // RootStackNavigationProp을 제네릭으로 전달해 navigate 호출 시 화면 이름과 파라미터 타입 검사
   const navigation = useNavigation<RootStackNavigationProp>();
   const onPress = () => {
+    // Write 화면으로 이동하면서 기존 log를 파라미터로 전달 → WriteScreen에서 수정 모드로 동작
     navigation.navigate('Write', { log });
   };
 

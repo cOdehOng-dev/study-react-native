@@ -13,9 +13,11 @@ import LogContext from '../contexts/LogContext';
 import { RootStackNavigationProp, RootStackScreenProps } from './RootStack';
 import { useNavigation } from '@react-navigation/native';
 
+// RootStackScreenProps<'Write'>로 좁혀서 route.params의 타입을 { log?: LogProps }로 확정
 type Prop = RootStackScreenProps<'Write'>;
 
 function WriteScreen({ route }: Prop) {
+  // route.params.log가 있으면 수정 모드, 없으면 새 글 작성 모드
   const log = route.params?.log;
   const [title, setTitle] = useState(log?.title ?? '');
   const [body, setBody] = useState(log?.body ?? '');
@@ -50,7 +52,7 @@ function WriteScreen({ route }: Prop) {
 
   const onSave = () => {
     if (log) {
-      // log이 존재한다면 수정, 없다면 새로 작성
+      // log가 존재한다면 수정(onModify), 없다면 새로 작성(onCreate)
       onModify({
         id: log.id,
         date: date.toISOString(),
