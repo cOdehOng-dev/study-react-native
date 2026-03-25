@@ -34,7 +34,7 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>${PRODUCT_NAME} 위치 정보를 사용하기 위해 접근 권한이 필요합니다.</string>
 	<key>RCTNewArchEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -60,5 +60,16 @@
 	<array>
    		<string>MaterialIcons.ttf</string>
 	</array>
+	<!-- 갤러리에서 읽기 (선택) -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>${PRODUCT_NAME} 사진을 선택하기 위해 갤러리 접근 권한이 필요합니다.</string>
+
+	<!-- 갤러리에 저장 (쓰기) -->
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>${PRODUCT_NAME} 사진을 저장하기 위해 갤러리 접근 권한이 필요합니다.</string>
+
+	<!-- 카메라 접근 -->
+	<key>NSCameraUsageDescription</key>
+	<string>${PRODUCT_NAME} 사진을 촬영하기 위해 카메라 접근 권한이 필요합니다.</string>
 </dict>
 </plist>
