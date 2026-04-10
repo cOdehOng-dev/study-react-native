@@ -1,8 +1,5 @@
 import React from 'react';
 import { Button, View } from 'react-native';
-import { useDispatch } from 'react-redux';
-import { authorize, logout } from '../slices/authSlice';
-import { useAppDispatch } from '../hooks/hooks';
 import useAuthActions from '../hooks/useAuthActions';
 
 function AuthButtons() {

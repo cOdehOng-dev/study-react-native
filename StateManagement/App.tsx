@@ -6,12 +6,10 @@
  */
 
 import { StatusBar, useColorScheme } from 'react-native';
-import { Provider } from 'react-redux';
-import store from './src/store/store';
-import AuthApp from './src/components/AuthApp';
-import TodoApp from './src/components/TodoApp';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
 import PostsApp from './src/components/PostsApp';
+import store from './src/store/store';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
