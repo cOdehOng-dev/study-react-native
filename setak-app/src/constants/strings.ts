@@ -1,0 +1,17 @@
+export const strings = {
+  appName: '세탁특공대',
+  tagline: '오늘도 깨끗하게',
+  login: '로그인',
+  logout: '로그아웃',
+  signup: '회원가입',
+  home: '홈',
+  order: '세탁신청',
+  history: '이용내역',
+  membership: '멤버십',
+  mypage: '마이페이지',
+  confirm: '확인',
+  cancel: '취소',
+  next: '다음',
+  complete: '완료',
+  orderComplete: '주문 완료',
+} as const;

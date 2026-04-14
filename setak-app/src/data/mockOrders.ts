@@ -1,0 +1,66 @@
+import {Order} from '../types/models';
+import {mockServices} from './mockServices';
+
+export const mockOrders: Order[] = [
+  {
+    id: 'ord-001',
+    service: mockServices[0],
+    items: [
+      {serviceId: 'svc-001', name: '셔츠', quantity: 3, price: 9000},
+      {serviceId: 'svc-001', name: '바지', quantity: 2, price: 6000},
+    ],
+    status: '배달중',
+    scheduledDate: '2026-04-15',
+    scheduledTime: '14:00',
+    address: '서울시 강남구 테헤란로 123',
+    totalPrice: 15000,
+    createdAt: '2026-04-14T10:00:00Z',
+  },
+  {
+    id: 'ord-002',
+    service: mockServices[1],
+    items: [
+      {serviceId: 'svc-002', name: '정장 상의', quantity: 1, price: 8000},
+      {serviceId: 'svc-002', name: '코트', quantity: 1, price: 8000},
+    ],
+    status: '세탁중',
+    scheduledDate: '2026-04-13',
+    scheduledTime: '10:00',
+    address: '서울시 마포구 홍익로 45',
+    totalPrice: 16000,
+    createdAt: '2026-04-12T09:00:00Z',
+  },
+  {
+    id: 'ord-003',
+    service: mockServices[2],
+    items: [{serviceId: 'svc-003', name: '이불 (싱글)', quantity: 2, price: 30000}],
+    status: '완료',
+    scheduledDate: '2026-04-10',
+    scheduledTime: '11:00',
+    address: '서울시 송파구 올림픽로 200',
+    totalPrice: 30000,
+    createdAt: '2026-04-09T14:00:00Z',
+  },
+  {
+    id: 'ord-004',
+    service: mockServices[3],
+    items: [{serviceId: 'svc-004', name: '운동화', quantity: 1, price: 10000}],
+    status: '수거중',
+    scheduledDate: '2026-04-05',
+    scheduledTime: '15:00',
+    address: '서울시 강남구 테헤란로 123',
+    totalPrice: 10000,
+    createdAt: '2026-04-04T11:00:00Z',
+  },
+  {
+    id: 'ord-005',
+    service: mockServices[0],
+    items: [{serviceId: 'svc-001', name: '티셔츠', quantity: 5, price: 15000}],
+    status: '접수',
+    scheduledDate: '2026-04-16',
+    scheduledTime: '13:00',
+    address: '서울시 강남구 테헤란로 123',
+    totalPrice: 15000,
+    createdAt: '2026-04-14T15:00:00Z',
+  },
+];
