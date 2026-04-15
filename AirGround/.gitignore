@@ -74,3 +74,5 @@ fastlane/.env
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+.env
