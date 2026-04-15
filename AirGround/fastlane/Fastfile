@@ -1,0 +1,27 @@
+# fastlane/Fastfile
+default_platform(:android)
+
+platform :android do
+  desc "테스트 실행 후 Slack 알림"
+  lane :review_and_notify do
+    sh("cd .. && yarn test --no-coverage --passWithNoTests 2>&1 | tee /tmp/airground_test_output.txt; exit 0")
+
+    test_output = File.read("/tmp/airground_test_output.txt") rescue "테스트 출력 없음"
+    passed = test_output.match(/(\d+) passed/)&.captures&.first || "0"
+    failed = test_output.match(/(\d+) failed/)&.captures&.first || "0"
+    all_passed = failed.to_i == 0
+
+    total_summary = "테스트: #{passed} 통과 / #{failed} 실패"
+
+    slack(
+      message: "#{all_passed ? '✅' : '❌'} AirGround — #{all_passed ? '빌드 성공' : '빌드 실패'}",
+      slack_url: ENV["SLACK_WEBHOOK_URL"],
+      success: all_passed,
+      payload: {
+        "테스트 결과" => total_summary,
+        "Branch" => sh("git rev-parse --abbrev-ref HEAD").strip,
+      },
+      default_payloads: []
+    )
+  end
+end
