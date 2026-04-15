@@ -1,0 +1,68 @@
+import { BrandModel } from '../../domain/model/BrandModel';
+
+export const MOCK_BRANDS: BrandModel[] = [
+  {
+    id: 'br001',
+    name: 'Nike',
+    nameKo: '나이키',
+    logoUri: 'https://picsum.photos/seed/nike/100/100',
+    productCount: 4821,
+    category: '스니커즈',
+  },
+  {
+    id: 'br002',
+    name: 'Jordan Brand',
+    nameKo: '조던 브랜드',
+    logoUri: 'https://picsum.photos/seed/jordan/100/100',
+    productCount: 1203,
+    category: '스니커즈',
+  },
+  {
+    id: 'br003',
+    name: 'Adidas',
+    nameKo: '아디다스',
+    logoUri: 'https://picsum.photos/seed/adidas/100/100',
+    productCount: 3542,
+    category: '스니커즈',
+  },
+  {
+    id: 'br004',
+    name: 'New Balance',
+    nameKo: '뉴발란스',
+    logoUri: 'https://picsum.photos/seed/nb/100/100',
+    productCount: 2891,
+    category: '스니커즈',
+  },
+  {
+    id: 'br005',
+    name: 'Converse',
+    nameKo: '컨버스',
+    logoUri: 'https://picsum.photos/seed/converse/100/100',
+    productCount: 987,
+    category: '스니커즈',
+  },
+  {
+    id: 'br006',
+    name: 'Vans',
+    nameKo: '반스',
+    logoUri: 'https://picsum.photos/seed/vans/100/100',
+    productCount: 1134,
+    category: '스니커즈',
+  },
+  {
+    id: 'br007',
+    name: 'Salomon',
+    nameKo: '살로몬',
+    logoUri: 'https://picsum.photos/seed/salomon/100/100',
+    productCount: 432,
+    category: '스니커즈',
+  },
+  {
+    id: 'br008',
+    name: 'Asics',
+    nameKo: '아식스',
+    logoUri: 'https://picsum.photos/seed/asics/100/100',
+    productCount: 678,
+    category: '스니커즈',
+  },
+];
