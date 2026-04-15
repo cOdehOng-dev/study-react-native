@@ -1,4 +1,4 @@
-import { ProductModel } from '../../../../domain/model/ProductModel';
+import { ProductModel } from '../../../domain/model/ProductModel';
 import { SortOption } from './ShopState';
 
 export type ShopAction =

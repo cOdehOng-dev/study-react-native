@@ -1,7 +1,7 @@
 import { useReducer, useCallback } from 'react';
 import { searchReducer } from './SearchReducer';
 import { initialSearchState } from './SearchState';
-import { GetSearchResultsUseCase } from '../../../../domain/usecase/GetSearchResultsUseCase';
+import { GetSearchResultsUseCase } from '../../../domain/usecase/GetSearchResultsUseCase';
 
 const getSearchResultsUseCase = new GetSearchResultsUseCase();
 

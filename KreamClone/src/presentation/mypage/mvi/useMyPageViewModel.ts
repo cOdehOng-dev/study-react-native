@@ -1,8 +1,8 @@
 import { useReducer, useCallback, useEffect } from 'react';
 import { myPageReducer } from './MyPageReducer';
 import { initialMyPageState } from './MyPageState';
-import { GetMyPageUseCase } from '../../../../domain/usecase/GetMyPageUseCase';
-import { ProductModel } from '../../../../domain/model/ProductModel';
+import { GetMyPageUseCase } from '../../../domain/usecase/GetMyPageUseCase';
+import { ProductModel } from '../../../domain/model/ProductModel';
 
 const getMyPageUseCase = new GetMyPageUseCase();
 

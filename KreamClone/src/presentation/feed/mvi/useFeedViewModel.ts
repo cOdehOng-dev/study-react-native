@@ -1,7 +1,7 @@
 import { useReducer, useCallback, useEffect } from 'react';
 import { feedReducer } from './FeedReducer';
 import { initialFeedState } from './FeedState';
-import { GetFeedUseCase } from '../../../../domain/usecase/GetFeedUseCase';
+import { GetFeedUseCase } from '../../../domain/usecase/GetFeedUseCase';
 
 const getFeedUseCase = new GetFeedUseCase();
 

@@ -1,4 +1,4 @@
-import { ProductModel } from '../../../../domain/model/ProductModel';
+import { ProductModel } from '../../../domain/model/ProductModel';
 
 export type SearchAction =
   | { type: 'SET_QUERY'; query: string }

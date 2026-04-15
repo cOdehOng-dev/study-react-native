@@ -1,4 +1,4 @@
-import { StyleModel } from '../../../../domain/model/StyleModel';
+import { StyleModel } from '../../../domain/model/StyleModel';
 
 export interface FeedState {
   styles: StyleModel[];

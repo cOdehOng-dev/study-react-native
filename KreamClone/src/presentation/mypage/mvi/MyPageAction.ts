@@ -1,6 +1,6 @@
-import { UserModel } from '../../../../domain/model/UserModel';
-import { OrderModel } from '../../../../domain/model/OrderModel';
-import { ProductModel } from '../../../../domain/model/ProductModel';
+import { UserModel } from '../../../domain/model/UserModel';
+import { OrderModel } from '../../../domain/model/OrderModel';
+import { ProductModel } from '../../../domain/model/ProductModel';
 
 export type MyPageAction =
   | { type: 'SET_LOADING'; isLoading: boolean }
