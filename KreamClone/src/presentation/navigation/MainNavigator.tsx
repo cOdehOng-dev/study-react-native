@@ -7,8 +7,17 @@ import SearchStackNavigator from './SearchStackNavigator';
 import MyPageStackNavigator from './MyPageStackNavigator';
 import ShopStackNavigator from './ShopStackNavigator';
 import { colors } from '../theme/colors';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
+
+const ICON_SIZE = 20;
+
+function getTabIcon(materialName: string) {
+  return ({ color }: { color: string }) => (
+    <MaterialIcons name={materialName} size={ICON_SIZE} color={color} />
+  );
+}
 
 export default function MainNavigator() {
   return (
@@ -23,12 +32,53 @@ export default function MainNavigator() {
           borderTopWidth: 1,
         },
         tabBarLabelStyle: { fontSize: 10, fontWeight: '600' },
-      }}>
-      <Tab.Screen name="Home" component={HomeStackNavigator} options={{ title: '홈' }} />
-      <Tab.Screen name="Shop" component={ShopStackNavigator} options={{ title: 'SHOP' }} />
-      <Tab.Screen name="Feed" component={FeedStackNavigator} options={{ title: '피드' }} />
-      <Tab.Screen name="Search" component={SearchStackNavigator} options={{ title: '검색' }} />
-      <Tab.Screen name="My" component={MyPageStackNavigator} options={{ title: 'MY' }} />
+      }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={HomeStackNavigator}
+        options={{
+          headerShown: false,
+          tabBarLabel: '홈',
+          tabBarIcon: getTabIcon('home'),
+        }}
+      />
+      <Tab.Screen
+        name="Shop"
+        component={ShopStackNavigator}
+        options={{
+          headerShown: false,
+          tabBarLabel: 'shop',
+          tabBarIcon: getTabIcon('shopping-bag'),
+        }}
+      />
+      <Tab.Screen
+        name="Feed"
+        component={FeedStackNavigator}
+        options={{
+          headerShown: false,
+          tabBarLabel: '피드',
+          tabBarIcon: getTabIcon('feed'),
+        }}
+      />
+      <Tab.Screen
+        name="Search"
+        component={SearchStackNavigator}
+        options={{
+          headerShown: false,
+          tabBarLabel: '검색',
+          tabBarIcon: getTabIcon('search'),
+        }}
+      />
+      <Tab.Screen
+        name="My"
+        component={MyPageStackNavigator}
+        options={{
+          headerShown: false,
+          tabBarLabel: '마이',
+          tabBarIcon: getTabIcon('account-circle'),
+        }}
+      />
     </Tab.Navigator>
   );
 }

@@ -8,16 +8,22 @@ interface Props {
   onSelect: (category: string) => void;
 }
 
-export const CategoryTabs: React.FC<Props> = ({ categories, selected, onSelect }) => (
+export const CategoryTabs: React.FC<Props> = ({
+  categories,
+  selected,
+  onSelect,
+}) => (
   <ScrollView
     horizontal
     showsHorizontalScrollIndicator={false}
-    contentContainerStyle={styles.container}>
-    {['전체', ...categories].map((cat) => (
+    contentContainerStyle={styles.container}
+  >
+    {['전체', ...categories].map(cat => (
       <TouchableOpacity
         key={cat}
         style={[styles.tab, selected === cat && styles.tabActive]}
-        onPress={() => onSelect(cat)}>
+        onPress={() => onSelect(cat)}
+      >
         <Text style={[styles.label, selected === cat && styles.labelActive]}>
           {cat}
         </Text>
@@ -29,8 +35,11 @@ export const CategoryTabs: React.FC<Props> = ({ categories, selected, onSelect }
 const styles = StyleSheet.create({
   container: { paddingHorizontal: 12, paddingVertical: 8, gap: 8 },
   tab: {
-    paddingHorizontal: 14, paddingVertical: 7,
-    borderRadius: 20, borderWidth: 1, borderColor: colors.gray200,
+    paddingHorizontal: 14,
+    paddingVertical: 7,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: colors.gray200,
     backgroundColor: colors.background,
   },
   tabActive: { backgroundColor: colors.primary, borderColor: colors.primary },

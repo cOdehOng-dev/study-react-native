@@ -3,17 +3,18 @@ import { ScrollView, StyleSheet } from 'react-native';
 import { ProductModel } from '../../../domain/model/ProductModel';
 import { ProductCard } from '../../components/ProductCard';
 
-interface Props {
+type Props = {
   products: ProductModel[];
   onPress: (product: ProductModel) => void;
-}
+};
 
-export const ProductSection: React.FC<Props> = ({ products, onPress }) => (
+export const ProductSection = ({ products, onPress }: Props) => (
   <ScrollView
     horizontal
     showsHorizontalScrollIndicator={false}
-    contentContainerStyle={styles.container}>
-    {products.map((product) => (
+    contentContainerStyle={styles.container}
+  >
+    {products.map(product => (
       <ProductCard
         key={product.id}
         brand={product.brand}

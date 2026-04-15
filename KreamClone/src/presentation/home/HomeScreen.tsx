@@ -1,12 +1,16 @@
 import React from 'react';
 import {
-  ScrollView, View, Text, TouchableOpacity,
-  StyleSheet, RefreshControl,
+  ScrollView,
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  RefreshControl,
 } from 'react-native';
 import { SafeAreaWrapper } from '../components/SafeAreaWrapper';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import { EmptyState } from '../components/EmptyState';
-import { BannerCarousel } from './components/BannerCarousel';
+import { ScrollBanner } from './components/ScrollBanner';
 import { CategoryTabs } from './components/CategoryTabs';
 import { ProductSection } from './components/ProductSection';
 import { SectionHeader } from './components/SectionHeader';
@@ -15,6 +19,7 @@ import { colors } from '../theme/colors';
 import { HomeStackScreenProps } from '../navigation/types';
 import { BannerModel } from '../../domain/model/BannerModel';
 import { ProductModel } from '../../domain/model/ProductModel';
+import { RootContainer } from './components/RootContainer';
 
 type Props = HomeStackScreenProps<'HomeMain'>;
 
@@ -30,48 +35,58 @@ export default function HomeScreen({ navigation }: Props) {
   };
 
   if (state.isLoading && state.trendingProducts.length === 0) {
-    return <SafeAreaWrapper><LoadingSpinner /></SafeAreaWrapper>;
+    return (
+      <SafeAreaWrapper>
+        <LoadingSpinner />
+      </SafeAreaWrapper>
+    );
   }
 
   if (state.error && state.trendingProducts.length === 0) {
     return (
       <SafeAreaWrapper>
-        <EmptyState message="데이터를 불러올 수 없습니다." subMessage={state.error} />
+        <EmptyState
+          message="데이터를 불러올 수 없습니다."
+          subMessage={state.error}
+        />
       </SafeAreaWrapper>
     );
   }
 
   return (
-    <SafeAreaWrapper>
-      {/* 상단 헤더 */}
-      <View style={styles.header}>
-        <Text style={styles.logo}>KREAM</Text>
-        <View style={styles.headerRight}>
-          <TouchableOpacity
-            style={styles.headerBtn}
-            onPress={() => navigation.navigate('Notification')}>
-            <Text style={styles.headerIcon}>🔔</Text>
-          </TouchableOpacity>
+    <RootContainer
+      topBar={
+        <View style={styles.header}>
+          <Text style={styles.logo}>KREAM</Text>
+          <View style={styles.headerRight}>
+            <TouchableOpacity
+              style={styles.headerBtn}
+              onPress={() => navigation.navigate('Notification')}
+            >
+              <Text style={styles.headerIcon}>🔔</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
-
+      }
+    >
       <ScrollView
         showsVerticalScrollIndicator={false}
+        contentInsetAdjustmentBehavior="never"
         refreshControl={
           <RefreshControl refreshing={state.isLoading} onRefresh={refresh} />
-        }>
-
+        }
+      >
         {/* 배너 캐러셀 */}
         {state.banners.length > 0 && (
-          <BannerCarousel banners={state.banners} onPress={handleBannerPress} />
+          <ScrollBanner banners={state.banners} onPress={handleBannerPress} />
         )}
 
         {/* 카테고리 탭 */}
-        <CategoryTabs
+        {/* <CategoryTabs
           categories={state.categories}
           selected={state.selectedCategory}
           onSelect={selectCategory}
-        />
+        /> */}
 
         {/* 빠른 메뉴 */}
         <View style={styles.quickMenu}>
@@ -82,12 +97,22 @@ export default function HomeScreen({ navigation }: Props) {
               { label: '브랜드', icon: '🏷️', route: 'BrandList' },
               { label: '컬렉션', icon: '📦', route: 'Collection' },
               { label: '이벤트', icon: '🎉', route: 'Event' },
-            ] as { label: string; icon: string; route: 'Ranking' | 'NewArrival' | 'BrandList' | 'Collection' | 'Event' }[]
+            ] as {
+              label: string;
+              icon: string;
+              route:
+                | 'Ranking'
+                | 'NewArrival'
+                | 'BrandList'
+                | 'Collection'
+                | 'Event';
+            }[]
           ).map(({ label, icon, route }) => (
             <TouchableOpacity
               key={label}
               style={styles.quickItem}
-              onPress={() => navigation.navigate(route)}>
+              onPress={() => navigation.navigate(route)}
+            >
               <View style={styles.quickIcon}>
                 <Text style={styles.quickEmoji}>{icon}</Text>
               </View>
@@ -125,36 +150,47 @@ export default function HomeScreen({ navigation }: Props) {
           products={state.newArrivals}
           onPress={handleProductPress}
         />
-
-        <View style={styles.bottomPadding} />
       </ScrollView>
-    </SafeAreaWrapper>
+    </RootContainer>
   );
 }
 
 const styles = StyleSheet.create({
   header: {
-    height: 48, flexDirection: 'row',
-    alignItems: 'center', justifyContent: 'space-between',
+    height: 48,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     paddingHorizontal: 16,
-    borderBottomWidth: 1, borderBottomColor: colors.gray200,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.gray200,
   },
-  logo: { fontSize: 20, fontWeight: '900', letterSpacing: 3, color: colors.primary },
+  logo: {
+    fontSize: 20,
+    fontWeight: '900',
+    letterSpacing: 3,
+    color: colors.primary,
+  },
   headerRight: { flexDirection: 'row', gap: 8 },
   headerBtn: { padding: 4 },
   headerIcon: { fontSize: 20 },
   quickMenu: {
-    flexDirection: 'row', justifyContent: 'space-around',
-    paddingVertical: 16, paddingHorizontal: 8,
-    borderBottomWidth: 1, borderBottomColor: colors.gray100,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: 16,
+    paddingHorizontal: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.gray100,
   },
   quickItem: { alignItems: 'center', gap: 6 },
   quickIcon: {
-    width: 52, height: 52, borderRadius: 26,
+    width: 52,
+    height: 52,
+    borderRadius: 26,
     backgroundColor: colors.gray100,
-    justifyContent: 'center', alignItems: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   quickEmoji: { fontSize: 22 },
   quickLabel: { fontSize: 11, color: colors.gray800 },
-  bottomPadding: { height: 32 },
 });

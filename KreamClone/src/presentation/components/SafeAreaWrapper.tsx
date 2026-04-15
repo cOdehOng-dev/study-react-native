@@ -1,5 +1,6 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, ViewStyle } from 'react-native';
+import { StyleSheet, ViewStyle } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors } from '../theme/colors';
 
 interface Props {
@@ -8,9 +9,7 @@ interface Props {
 }
 
 export const SafeAreaWrapper: React.FC<Props> = ({ children, style }) => (
-  <SafeAreaView style={[styles.container, style]}>
-    {children}
-  </SafeAreaView>
+  <SafeAreaView style={[styles.container, style]}>{children}</SafeAreaView>
 );
 
 const styles = StyleSheet.create({
