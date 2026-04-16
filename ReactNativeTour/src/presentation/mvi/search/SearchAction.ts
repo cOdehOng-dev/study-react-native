@@ -6,6 +6,7 @@ export type SearchAction =
   | { type: 'UPDATE_FLIGHT_DEPARTURE'; payload: string }
   | { type: 'UPDATE_FLIGHT_ARRIVAL'; payload: string }
   | { type: 'UPDATE_FLIGHT_DATE'; payload: { departure: string; return?: string } }
+  // infants는 partial update 허용: 생략 시 기존 flight.infants 값을 유지
   | { type: 'UPDATE_PASSENGERS'; payload: { adults: number; children: number; infants?: number } }
   | { type: 'SWAP_FLIGHT_CITIES' }
   | { type: 'UPDATE_HOTEL_DESTINATION'; payload: string }

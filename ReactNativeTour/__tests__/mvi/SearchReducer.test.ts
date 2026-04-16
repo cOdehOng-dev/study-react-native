@@ -64,6 +64,26 @@ describe('SearchReducer', () => {
     expect(state.tour.date).toBe('2026-06-01');
   });
 
+  it('UPDATE_PASSENGERS: infants 전달 시 flight.infants에 반영된다', () => {
+    const action = { type: 'UPDATE_PASSENGERS' as const, payload: { adults: 2, children: 0, infants: 1 } };
+    const state = searchReducer(initialSearchState, action);
+    expect(state.flight.infants).toBe(1);
+  });
+
+  it('UPDATE_PASSENGERS: infants 생략 시 기존 flight.infants가 유지된다', () => {
+    const action = { type: 'UPDATE_PASSENGERS' as const, payload: { adults: 2, children: 0 } };
+    const state = searchReducer(initialSearchState, action);
+    expect(state.flight.infants).toBe(initialSearchState.flight.infants);
+  });
+
+  it('UPDATE_TRIP_TYPE: round 복원 시 기존 returnDate가 유지된다', () => {
+    const onewayState = searchReducer(initialSearchState, { type: 'UPDATE_TRIP_TYPE' as const, payload: 'oneway' });
+    const roundState = searchReducer(onewayState, { type: 'UPDATE_TRIP_TYPE' as const, payload: 'round' });
+    expect(roundState.flight.tripType).toBe('round');
+    // oneway 전환 시 returnDate가 undefined였으므로 round 복원 시에도 undefined 유지
+    expect(roundState.flight.returnDate).toBeUndefined();
+  });
+
   it('unknown action: 상태를 변경하지 않는다', () => {
     const action = { type: 'UNKNOWN_ACTION' } as any;
     const state = searchReducer(initialSearchState, action);
