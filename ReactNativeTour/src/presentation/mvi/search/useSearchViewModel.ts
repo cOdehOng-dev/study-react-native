@@ -23,8 +23,28 @@ export function useSearchViewModel() {
     dispatch({ type: 'SWAP_FLIGHT_CITIES' });
   }, []);
 
-  const updatePassengers = useCallback((adults: number, children: number) => {
-    dispatch({ type: 'UPDATE_PASSENGERS', payload: { adults, children } });
+  const updatePassengers = useCallback((adults: number, children: number, infants?: number) => {
+    dispatch({ type: 'UPDATE_PASSENGERS', payload: { adults, children, ...(infants !== undefined && { infants }) } });
+  }, []);
+
+  const updateTripType = useCallback((tripType: 'round' | 'oneway') => {
+    dispatch({ type: 'UPDATE_TRIP_TYPE', payload: tripType });
+  }, []);
+
+  const updateFlightDate = useCallback((departure: string, returnDate?: string) => {
+    dispatch({ type: 'UPDATE_FLIGHT_DATE', payload: { departure, return: returnDate } });
+  }, []);
+
+  const updateTourDate = useCallback((date: string) => {
+    dispatch({ type: 'UPDATE_TOUR_DATE', payload: date });
+  }, []);
+
+  const updatePackageDate = useCallback((departure: string, returnDate: string) => {
+    dispatch({ type: 'UPDATE_PACKAGE_DATE', payload: { departure, return: returnDate } });
+  }, []);
+
+  const updateHotelRooms = useCallback((rooms: number) => {
+    dispatch({ type: 'UPDATE_HOTEL_ROOMS', payload: rooms });
   }, []);
 
   const updateHotelDestination = useCallback((destination: string) => {
@@ -50,6 +70,11 @@ export function useSearchViewModel() {
     updateArrival,
     swapCities,
     updatePassengers,
+    updateTripType,
+    updateFlightDate,
+    updateTourDate,
+    updatePackageDate,
+    updateHotelRooms,
     updateHotelDestination,
     updateHotelDate,
     updateTourDestination,

@@ -19,18 +19,45 @@ export function searchReducer(state: SearchState, action: SearchAction): SearchS
         flight: {
           ...state.flight,
           departureDate: action.payload.departure,
-          returnDate: action.payload.return,
+          ...(action.payload.return !== undefined && { returnDate: action.payload.return }),
         },
       };
 
     case 'UPDATE_PASSENGERS':
       return {
         ...state,
-        flight: { ...state.flight, adults: action.payload.adults, children: action.payload.children },
+        flight: {
+          ...state.flight,
+          adults: action.payload.adults,
+          children: action.payload.children,
+          ...(action.payload.infants !== undefined && { infants: action.payload.infants }),
+        },
         hotel: { ...state.hotel, adults: action.payload.adults, children: action.payload.children },
         tour: { ...state.tour, adults: action.payload.adults, children: action.payload.children },
         package: { ...state.package, adults: action.payload.adults, children: action.payload.children },
       };
+
+    case 'UPDATE_TRIP_TYPE':
+      return {
+        ...state,
+        flight: {
+          ...state.flight,
+          tripType: action.payload,
+          returnDate: action.payload === 'oneway' ? undefined : state.flight.returnDate,
+        },
+      };
+
+    case 'UPDATE_TOUR_DATE':
+      return { ...state, tour: { ...state.tour, date: action.payload } };
+
+    case 'UPDATE_PACKAGE_DATE':
+      return {
+        ...state,
+        package: { ...state.package, departureDate: action.payload.departure, returnDate: action.payload.return },
+      };
+
+    case 'UPDATE_HOTEL_ROOMS':
+      return { ...state, hotel: { ...state.hotel, rooms: action.payload } };
 
     case 'SWAP_FLIGHT_CITIES':
       return {

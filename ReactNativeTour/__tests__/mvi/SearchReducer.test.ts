@@ -35,4 +35,38 @@ describe('SearchReducer', () => {
     expect(state.flight.departure).toBe('서울');
     expect(state.hotel.adults).toBe(2);
   });
+
+  it('UPDATE_PASSENGERS: hotel, tour, package에도 동기화된다', () => {
+    const action = { type: 'UPDATE_PASSENGERS' as const, payload: { adults: 3, children: 1 } };
+    const state = searchReducer(initialSearchState, action);
+    expect(state.hotel.adults).toBe(3);
+    expect(state.hotel.children).toBe(1);
+    expect(state.tour.adults).toBe(3);
+    expect(state.package.adults).toBe(3);
+  });
+
+  it('UPDATE_TRIP_TYPE: oneway로 변경 시 returnDate가 제거된다', () => {
+    const action = { type: 'UPDATE_TRIP_TYPE' as const, payload: 'oneway' as const };
+    const state = searchReducer(initialSearchState, action);
+    expect(state.flight.tripType).toBe('oneway');
+    expect(state.flight.returnDate).toBeUndefined();
+  });
+
+  it('UPDATE_HOTEL_ROOMS: 객실 수를 변경한다', () => {
+    const action = { type: 'UPDATE_HOTEL_ROOMS' as const, payload: 2 };
+    const state = searchReducer(initialSearchState, action);
+    expect(state.hotel.rooms).toBe(2);
+  });
+
+  it('UPDATE_TOUR_DATE: 투어 날짜를 변경한다', () => {
+    const action = { type: 'UPDATE_TOUR_DATE' as const, payload: '2026-06-01' };
+    const state = searchReducer(initialSearchState, action);
+    expect(state.tour.date).toBe('2026-06-01');
+  });
+
+  it('unknown action: 상태를 변경하지 않는다', () => {
+    const action = { type: 'UNKNOWN_ACTION' } as any;
+    const state = searchReducer(initialSearchState, action);
+    expect(state).toBe(initialSearchState);
+  });
 });
