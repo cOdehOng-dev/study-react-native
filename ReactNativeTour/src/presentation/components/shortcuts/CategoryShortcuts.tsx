@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { colors } from '../../theme/colors';
 import { typography } from '../../theme/typography';
 
-interface ShortcutItem {
+export interface ShortcutItem {
   id: string;
   label: string;
   icon: string;
@@ -23,15 +23,26 @@ const SHORTCUTS: ShortcutItem[] = [
   { id: '10', label: '연차소진', icon: '🎉' },
 ];
 
-export function CategoryShortcuts() {
+interface CategoryShortcutsProps {
+  onShortcutPress?: (item: ShortcutItem) => void;
+}
+
+export function CategoryShortcuts({ onShortcutPress }: CategoryShortcutsProps) {
   const rows = [SHORTCUTS.slice(0, 5), SHORTCUTS.slice(5, 10)];
 
   return (
     <View style={styles.container}>
-      {rows.map((row, rowIdx) => (
-        <View key={rowIdx} style={styles.row}>
+      {rows.map((row) => (
+        <View key={row[0].id} style={styles.row}>
           {row.map(item => (
-            <TouchableOpacity key={item.id} style={styles.item} activeOpacity={0.7}>
+            <TouchableOpacity
+              key={item.id}
+              style={styles.item}
+              activeOpacity={0.7}
+              onPress={() => onShortcutPress?.(item)}
+              accessibilityRole="button"
+              accessibilityLabel={`${item.label} 카테고리로 이동`}
+            >
               <View style={styles.iconBox}>
                 <Text style={styles.icon}>{item.icon}</Text>
               </View>
