@@ -5,4 +5,4 @@ export const typography = {
   medium: 'Pretendard-Medium',
   regular: 'Pretendard-Regular',
   light: 'Pretendard-Light',
-};
+} as const;
