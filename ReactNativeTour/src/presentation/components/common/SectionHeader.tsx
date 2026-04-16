@@ -14,7 +14,7 @@ export function SectionHeader({ title, tabLabel, onTabPress }: SectionHeaderProp
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
-      {tabLabel && (
+      {tabLabel && onTabPress && (
         <TouchableOpacity
           onPress={onTabPress}
           activeOpacity={0.7}
