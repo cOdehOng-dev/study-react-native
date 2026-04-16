@@ -18,7 +18,13 @@ export function FlightSearchForm({ form, onSwap }: Props) {
           <Text style={styles.cityIcon}>📍</Text>
           <Text style={styles.cityText}>{form.departure}</Text>
         </View>
-        <TouchableOpacity style={styles.swapBtn} onPress={onSwap} activeOpacity={0.7}>
+        <TouchableOpacity
+          style={styles.swapBtn}
+          onPress={onSwap}
+          activeOpacity={0.7}
+          accessibilityRole="button"
+          accessibilityLabel="출발지/도착지 교환"
+        >
           <Text style={styles.swapIcon}>⇄</Text>
         </TouchableOpacity>
         <View style={styles.cityBox}>
@@ -29,7 +35,9 @@ export function FlightSearchForm({ form, onSwap }: Props) {
       <View style={styles.dateRow}>
         <Text style={styles.dateIcon}>📅</Text>
         <Text style={styles.dateText}>
-          {form.departureDate} ~ {form.returnDate}
+          {form.tripType === 'oneway'
+            ? form.departureDate
+            : `${form.departureDate}${form.returnDate ? ` ~ ${form.returnDate}` : ''}`}
         </Text>
         <Text style={styles.passengerText}>성인 {form.adults}</Text>
       </View>

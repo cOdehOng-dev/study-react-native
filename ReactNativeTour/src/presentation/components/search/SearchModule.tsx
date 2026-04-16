@@ -29,6 +29,8 @@ export function SearchModule({ state, onSelectTab, onSwapCities }: Props) {
               style={[styles.tab, state.activeTab === tab && styles.tabActive]}
               onPress={() => onSelectTab(tab)}
               activeOpacity={0.7}
+              accessibilityRole="button"
+              accessibilityLabel={tab}
             >
               <Text
                 style={[
@@ -51,7 +53,12 @@ export function SearchModule({ state, onSelectTab, onSwapCities }: Props) {
           {state.activeTab === '해외패키지' && <PackageSearchForm form={state.package} />}
         </View>
 
-        <TouchableOpacity style={styles.searchBtn} activeOpacity={0.8}>
+        <TouchableOpacity
+          style={styles.searchBtn}
+          activeOpacity={0.8}
+          accessibilityRole="button"
+          accessibilityLabel="최저가 검색"
+        >
           <Text style={styles.searchBtnText}>최저가 검색</Text>
         </TouchableOpacity>
       </View>
