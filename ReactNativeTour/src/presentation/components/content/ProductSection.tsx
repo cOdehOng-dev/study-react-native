@@ -8,14 +8,15 @@ import { colors } from '../../theme/colors';
 
 interface Props {
   section: ProductSectionType;
+  onTabPress?: () => void;
 }
 
-export function ProductSection({ section }: Props) {
+export function ProductSection({ section, onTabPress }: Props) {
   const isGrid = section.type === 'two_column_grid';
 
   return (
     <View style={styles.container}>
-      <SectionHeader title={section.title} tabLabel={section.tabLabel} />
+      <SectionHeader title={section.title} tabLabel={section.tabLabel} onTabPress={onTabPress} />
       {isGrid ? (
         <View style={styles.grid}>
           {section.items.map(item => (

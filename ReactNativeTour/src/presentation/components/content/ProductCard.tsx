@@ -13,7 +13,12 @@ interface Props {
 export function ProductCard({ item, type }: Props) {
   if (type === 'horizontal_small_card') {
     return (
-      <TouchableOpacity style={styles.smallCard} activeOpacity={0.8}>
+      <TouchableOpacity
+        style={styles.smallCard}
+        activeOpacity={0.8}
+        accessibilityRole="button"
+        accessibilityLabel={`${item.title} 상품 보기`}
+      >
         <View style={styles.smallImagePlaceholder} />
         {item.badge && (
           <View style={styles.badge}>
@@ -31,7 +36,12 @@ export function ProductCard({ item, type }: Props) {
 
   if (type === 'horizontal_destination_chip') {
     return (
-      <TouchableOpacity style={styles.chipCard} activeOpacity={0.8}>
+      <TouchableOpacity
+        style={styles.chipCard}
+        activeOpacity={0.8}
+        accessibilityRole="button"
+        accessibilityLabel={`${item.label ?? item.title} 여행지 보기`}
+      >
         <View style={styles.chipImagePlaceholder} />
         <Text style={styles.chipLabel}>{item.label ?? item.title}</Text>
       </TouchableOpacity>
@@ -40,7 +50,12 @@ export function ProductCard({ item, type }: Props) {
 
   if (type === 'two_column_grid') {
     return (
-      <TouchableOpacity style={styles.gridCard} activeOpacity={0.8}>
+      <TouchableOpacity
+        style={styles.gridCard}
+        activeOpacity={0.8}
+        accessibilityRole="button"
+        accessibilityLabel={`${item.title} 상품 보기`}
+      >
         <View style={styles.gridImagePlaceholder} />
         <View style={styles.gridTextArea}>
           <Text style={styles.gridTitle} numberOfLines={2}>{item.title}</Text>
@@ -55,9 +70,16 @@ export function ProductCard({ item, type }: Props) {
     );
   }
 
+  // 'row_list' 타입은 현재 'horizontal_poi_card'와 동일 레이아웃으로 폴백 처리
+  // TODO: row_list 전용 레이아웃 구현 필요
   // horizontal_poi_card (default)
   return (
-    <TouchableOpacity style={styles.poiCard} activeOpacity={0.8}>
+    <TouchableOpacity
+      style={styles.poiCard}
+      activeOpacity={0.8}
+      accessibilityRole="button"
+      accessibilityLabel={`${item.title} 상품 보기`}
+    >
       <View style={styles.poiImagePlaceholder}>
         {item.badge && (
           <View style={styles.badge}>
@@ -66,7 +88,9 @@ export function ProductCard({ item, type }: Props) {
         )}
       </View>
       <View style={styles.poiInfo}>
-        <Text style={styles.poiLocation}>{item.location}</Text>
+        {item.location !== undefined && (
+          <Text style={styles.poiLocation}>{item.location}</Text>
+        )}
         <Text style={styles.poiTitle} numberOfLines={2}>{item.title}</Text>
         {item.rating !== undefined && (
           <Text style={styles.rating}>
@@ -74,7 +98,7 @@ export function ProductCard({ item, type }: Props) {
           </Text>
         )}
         <View style={styles.priceRow}>
-          {item.discountRate && (
+          {item.discountRate !== undefined && item.discountRate > 0 && (
             <Text style={styles.discountRate}>{item.discountRate}%</Text>
           )}
           <Text style={styles.price}>{item.price.toLocaleString()}원</Text>
