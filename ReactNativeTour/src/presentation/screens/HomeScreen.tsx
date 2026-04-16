@@ -59,6 +59,7 @@ export function HomeScreen() {
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
+        keyboardShouldPersistTaps="handled"
       >
         <View style={styles.searchSection}>
           <SearchModule
@@ -101,8 +102,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   searchSection: {
-    paddingTop: 8,
-    paddingBottom: 8,
+    paddingVertical: 8,
   },
   bannerListSection: {
     paddingTop: 32,
