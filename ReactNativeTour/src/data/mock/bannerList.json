@@ -1,0 +1,6 @@
+{
+  "banners": [
+    { "id": "b1", "title": "12월 해외여행 프로모션", "subtitle": "최대 30% 할인", "imageUrl": "", "backgroundColor": "#4154ff" },
+    { "id": "b2", "title": "NOL 앱 전용 특가", "subtitle": "앱에서만 만나는 혜택", "imageUrl": "", "backgroundColor": "#ff7262" }
+  ]
+}

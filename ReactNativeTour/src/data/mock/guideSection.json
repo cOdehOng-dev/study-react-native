@@ -1,0 +1,10 @@
+{
+  "title": "여행 가이드",
+  "tabLabel": "더보기",
+  "guides": [
+    { "id": "g1", "title": "다낭 여행 완벽 가이드", "subtitle": "놓치면 후회하는 명소 TOP 10", "category": "가이드", "imageUrl": "" },
+    { "id": "g2", "title": "오사카 먹방 여행", "subtitle": "현지인 추천 맛집 리스트", "category": "맛집", "imageUrl": "" },
+    { "id": "g3", "title": "방콕 쇼핑 지도", "subtitle": "MBK부터 아이콘시암까지", "category": "쇼핑", "imageUrl": "" },
+    { "id": "g4", "title": "유럽 배낭여행 준비물", "subtitle": "꼭 챙겨야 할 20가지", "category": "팁", "imageUrl": "" }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "title": "NOL LIVE",
+  "subtitle": "지금 라이브로 만나는 여행",
+  "lives": [
+    { "id": "live1", "title": "다낭 5성급 리조트 실시간 투어", "host": "여행작가 김민준", "viewerCount": 1243, "thumbnailUrl": "", "isLive": true, "scheduledAt": null },
+    { "id": "live2", "title": "오사카 현지 맛집 라이브", "host": "먹방여행가 이수진", "viewerCount": 892, "thumbnailUrl": "", "isLive": true, "scheduledAt": null },
+    { "id": "live3", "title": "방콕 쇼핑 라이브", "host": "쇼핑 큐레이터 박지현", "viewerCount": 0, "thumbnailUrl": "", "isLive": false, "scheduledAt": "2025-12-20T19:00:00" }
+  ]
+}
