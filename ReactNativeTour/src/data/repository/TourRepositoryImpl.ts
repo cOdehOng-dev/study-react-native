@@ -26,7 +26,8 @@ export class TourRepositoryImpl implements TourRepository {
         nolLiveData,
       );
     } catch (error) {
-      throw new Error('홈 콘텐츠 로딩 실패: ' + (error as Error).message);
+      const msg = error instanceof Error ? error.message : String(error);
+      throw new Error(`홈 콘텐츠 로딩 실패: ${msg}`);
     }
   }
 

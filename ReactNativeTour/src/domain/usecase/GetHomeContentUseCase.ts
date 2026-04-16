@@ -9,7 +9,8 @@ export class GetHomeContentUseCase {
     try {
       return await this.repository.getHomeContent();
     } catch (error) {
-      throw new Error('GetHomeContentUseCase 실패: ' + (error as Error).message);
+      const msg = error instanceof Error ? error.message : String(error);
+      throw new Error(`GetHomeContentUseCase 실패: ${msg}`);
     }
   }
 }
