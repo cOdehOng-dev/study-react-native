@@ -7,12 +7,13 @@ import { GuideCard } from './GuideCard';
 
 interface Props {
   section: GuideSectionType;
+  onTabPress?: () => void;
 }
 
-export function GuideSection({ section }: Props) {
+export function GuideSection({ section, onTabPress }: Props) {
   return (
     <View style={styles.container}>
-      <SectionHeader title={section.title} tabLabel={section.tabLabel} />
+      <SectionHeader title={section.title} tabLabel={section.tabLabel} onTabPress={onTabPress} />
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}

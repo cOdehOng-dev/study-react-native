@@ -19,6 +19,7 @@ export function BannerListSection({ banners }: Props) {
       {banners.map(banner => (
         <TouchableOpacity
           key={banner.id}
+          // backgroundColor는 데이터에서 받는 동적 값이므로 인라인 스타일 사용
           style={[styles.banner, { backgroundColor: banner.backgroundColor }]}
           activeOpacity={0.8}
           accessibilityRole="button"

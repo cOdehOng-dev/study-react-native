@@ -13,7 +13,7 @@ interface Props {
 export function NolLiveSection({ section }: Props) {
   return (
     <View style={styles.container}>
-      <SectionHeader title={section.title} tabLabel={null} />
+      <SectionHeader title={section.title} />
       <Text style={styles.subtitle}>{section.subtitle}</Text>
       <ScrollView
         horizontal
@@ -45,7 +45,7 @@ export function NolLiveSection({ section }: Props) {
               <Text style={styles.host}>{live.host}</Text>
               {live.isLive && live.viewerCount > 0 && (
                 <Text style={styles.viewers}>
-                  👁 {live.viewerCount.toLocaleString()}명 시청 중
+                  {live.viewerCount.toLocaleString()}명 시청 중
                 </Text>
               )}
             </View>
