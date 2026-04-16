@@ -29,12 +29,12 @@ export interface ProductItem {
   destination?: string;
   departureCity?: string;
   price: number;
-  originalPrice?: number | null;
-  discountRate?: number | null;
+  originalPrice?: number;
+  discountRate?: number;
   rating?: number;
   reviewCount?: number;
   imageUrl: string;
-  badge?: string | null;
+  badge?: string;
   isFreeCancellation?: boolean;
   label?: string;
   tag?: string;
@@ -73,7 +73,7 @@ export interface FlightDeal {
   originalPrice: number;
   discountRate: number;
   airline: string;
-  tripType: string;
+  tripType: 'round' | 'oneway';
   badge: string | null;
 }
 

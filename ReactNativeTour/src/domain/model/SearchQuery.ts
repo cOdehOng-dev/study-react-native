@@ -6,7 +6,7 @@ export interface FlightSearchForm {
   departure: string;
   arrival: string;
   departureDate: string;
-  returnDate: string;
+  returnDate?: string;
   adults: number;
   children: number;
   infants: number;
