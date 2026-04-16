@@ -15,7 +15,13 @@ export function SectionHeader({ title, tabLabel, onTabPress }: SectionHeaderProp
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
       {tabLabel && (
-        <TouchableOpacity onPress={onTabPress} activeOpacity={0.7}>
+        <TouchableOpacity
+          onPress={onTabPress}
+          activeOpacity={0.7}
+          accessibilityRole="button"
+          accessibilityLabel={tabLabel}
+          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+        >
           <Text style={styles.tab}>{tabLabel}</Text>
         </TouchableOpacity>
       )}

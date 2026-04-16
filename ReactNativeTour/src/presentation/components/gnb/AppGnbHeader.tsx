@@ -16,7 +16,14 @@ export function AppGnbHeader({ onSearchPress }: AppGnbHeaderProps) {
         <Text style={styles.logoSubText}> 인터파크투어</Text>
         <Text style={styles.arrowDown}> ▼</Text>
       </View>
-      <TouchableOpacity style={styles.searchBtn} onPress={onSearchPress} activeOpacity={0.7}>
+      <TouchableOpacity
+        style={styles.searchBtn}
+        onPress={onSearchPress}
+        activeOpacity={0.7}
+        accessibilityRole="button"
+        accessibilityLabel="검색"
+        hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+      >
         <Text style={styles.searchIcon}>⌕</Text>
       </TouchableOpacity>
     </View>
