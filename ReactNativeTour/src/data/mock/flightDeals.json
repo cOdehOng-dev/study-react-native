@@ -1,0 +1,12 @@
+{
+  "title": "땡처리 항공",
+  "subtitle": "오늘 출발 특가 항공권",
+  "backgroundImageUrl": "",
+  "deals": [
+    { "id": "fd1", "departure": "서울", "departureCode": "ICN", "arrival": "다낭", "arrivalCode": "DAD", "departureDate": "2026-04-20", "price": 69000, "originalPrice": 180000, "discountRate": 62, "airline": "베트남항공", "tripType": "round", "badge": "마감임박" },
+    { "id": "fd2", "departure": "서울", "departureCode": "ICN", "arrival": "오사카", "arrivalCode": "KIX", "departureDate": "2026-04-21", "price": 89000, "originalPrice": 210000, "discountRate": 58, "airline": "에어서울", "tripType": "round", "badge": null },
+    { "id": "fd3", "departure": "서울", "departureCode": "ICN", "arrival": "방콕", "arrivalCode": "BKK", "departureDate": "2026-04-22", "price": 129000, "originalPrice": 290000, "discountRate": 55, "airline": "타이항공", "tripType": "round", "badge": "HOT" },
+    { "id": "fd4", "departure": "서울", "departureCode": "ICN", "arrival": "도쿄", "arrivalCode": "NRT", "departureDate": "2026-04-23", "price": 109000, "originalPrice": 240000, "discountRate": 55, "airline": "대한항공", "tripType": "round", "badge": null }
+  ],
+  "buttonLabel": "전체 땡처리 항공 보기"
+}

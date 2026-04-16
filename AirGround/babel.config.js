@@ -9,5 +9,12 @@ module.exports = {
         alias: { '@': './src' },
       },
     ],
+    [
+      'module:react-native-dotenv',
+      {
+        moduleName: '@env',
+        path: '.env',
+      },
+    ],
   ],
 };

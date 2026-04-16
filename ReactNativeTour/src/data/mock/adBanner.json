@@ -1,0 +1,10 @@
+{
+  "adBanner": {
+    "id": "ad_1",
+    "title": "해외여행 최저가 보장",
+    "subtitle": "지금 바로 확인해보세요",
+    "imageUrl": "",
+    "isAd": true,
+    "indicatorLabel": "1/3"
+  }
+}

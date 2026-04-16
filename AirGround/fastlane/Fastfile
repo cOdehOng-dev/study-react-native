@@ -12,15 +12,20 @@ platform :android do
     all_passed = failed.to_i == 0
 
     total_summary = "테스트: #{passed} 통과 / #{failed} 실패"
+    branch = sh("git rev-parse --abbrev-ref HEAD").strip
+    pr_url = sh("gh pr view --json url -q .url 2>/dev/null || echo ''").strip
+
+    payload = {
+      "테스트 결과" => total_summary,
+      "Branch" => branch,
+    }
+    payload["PR"] = pr_url unless pr_url.empty?
 
     slack(
       message: "#{all_passed ? '✅' : '❌'} AirGround — #{all_passed ? '빌드 성공' : '빌드 실패'}",
       slack_url: ENV["SLACK_WEBHOOK_URL"],
       success: all_passed,
-      payload: {
-        "테스트 결과" => total_summary,
-        "Branch" => sh("git rev-parse --abbrev-ref HEAD").strip,
-      },
+      payload: payload,
       default_payloads: []
     )
   end

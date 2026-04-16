@@ -1,0 +1,73 @@
+{
+  "sections": [
+    {
+      "id": "section_flight_deal",
+      "title": "지금 뜨는 항공 특가",
+      "tabLabel": "항공",
+      "type": "horizontal_small_card",
+      "items": [
+        { "id": "f1", "title": "다낭", "departureCity": "서울", "price": 89000, "imageUrl": "", "badge": "특가", "tag": "왕복" },
+        { "id": "f2", "title": "오사카", "departureCity": "서울", "price": 129000, "imageUrl": "", "tag": "왕복" },
+        { "id": "f3", "title": "방콕", "departureCity": "서울", "price": 159000, "imageUrl": "", "badge": "얼리버드", "tag": "왕복" },
+        { "id": "f4", "title": "도쿄", "departureCity": "서울", "price": 109000, "imageUrl": "", "tag": "왕복" },
+        { "id": "f5", "title": "싱가포르", "departureCity": "서울", "price": 179000, "imageUrl": "", "tag": "왕복" }
+      ]
+    },
+    {
+      "id": "section_tour_popular",
+      "title": "지금 뜨는 해외 투어",
+      "tabLabel": "더보기",
+      "type": "horizontal_poi_card",
+      "items": [
+        { "id": "t1", "title": "다낭 시내 + 바나힐 프리미엄 투어", "location": "다낭", "price": 89000, "originalPrice": 120000, "discountRate": 25, "rating": 4.9, "reviewCount": 2341, "imageUrl": "", "badge": "베스트", "isFreeCancellation": true },
+        { "id": "t2", "title": "오사카 닌자 체험 + 오코노미야키 만들기", "location": "오사카", "price": 65000, "rating": 4.7, "reviewCount": 987, "imageUrl": "", "isFreeCancellation": false },
+        { "id": "t3", "title": "방콕 왕궁 + 왓포 반나절 투어", "location": "방콕", "price": 45000, "originalPrice": 55000, "discountRate": 18, "rating": 4.6, "reviewCount": 1102, "imageUrl": "", "isFreeCancellation": true }
+      ]
+    },
+    {
+      "id": "section_destination_theme",
+      "title": "테마별 여행지",
+      "tabLabel": "더보기",
+      "type": "horizontal_destination_chip",
+      "items": [
+        { "id": "d1", "title": "유럽", "label": "유럽", "price": 0, "imageUrl": "" },
+        { "id": "d2", "title": "동남아", "label": "동남아", "price": 0, "imageUrl": "" },
+        { "id": "d3", "title": "일본", "label": "일본", "price": 0, "imageUrl": "" },
+        { "id": "d4", "title": "미주", "label": "미주", "price": 0, "imageUrl": "" },
+        { "id": "d5", "title": "중국", "label": "중국", "price": 0, "imageUrl": "" }
+      ]
+    },
+    {
+      "id": "section_package_popular",
+      "title": "인기 해외 패키지",
+      "tabLabel": "더보기",
+      "type": "horizontal_poi_card",
+      "items": [
+        { "id": "pk1", "title": "파리+런던 10일 유럽 핵심 패키지", "location": "유럽", "price": 2490000, "originalPrice": 2990000, "discountRate": 17, "rating": 4.8, "reviewCount": 456, "imageUrl": "", "badge": "BEST", "isFreeCancellation": false },
+        { "id": "pk2", "title": "발리 자유여행 4박 6일", "location": "발리", "price": 890000, "rating": 4.5, "reviewCount": 231, "imageUrl": "", "isFreeCancellation": true }
+      ]
+    },
+    {
+      "id": "section_hotel_popular",
+      "title": "지금 예약하면 할인",
+      "tabLabel": "더보기",
+      "type": "horizontal_poi_card",
+      "items": [
+        { "id": "h1", "title": "다낭 빈펄 리조트 & 스파", "location": "다낭", "price": 189000, "originalPrice": 250000, "discountRate": 24, "rating": 4.9, "reviewCount": 3210, "imageUrl": "", "badge": "오늘만", "isFreeCancellation": true },
+        { "id": "h2", "title": "도쿄 신주쿠 프리미어 호텔", "location": "도쿄", "price": 145000, "rating": 4.4, "reviewCount": 882, "imageUrl": "", "isFreeCancellation": false }
+      ]
+    },
+    {
+      "id": "section_coupon_event",
+      "title": "쿠폰·이벤트",
+      "tabLabel": null,
+      "type": "two_column_grid",
+      "items": [
+        { "id": "ev1", "title": "첫 예약 5만원 할인", "label": "신규 가입 쿠폰", "price": 0, "imageUrl": "", "badge": "D-3" },
+        { "id": "ev2", "title": "항공+호텔 묶음 10% 추가 할인", "label": "패키지 전용", "price": 0, "imageUrl": "" },
+        { "id": "ev3", "title": "제주 렌터카 20% 할인", "label": "주말 한정", "price": 0, "imageUrl": "", "badge": "HOT" },
+        { "id": "ev4", "title": "해외투어 리뷰 작성 시 1만원", "label": "후기 이벤트", "price": 0, "imageUrl": "" }
+      ]
+    }
+  ]
+}
