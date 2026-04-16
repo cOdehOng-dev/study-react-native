@@ -1,6 +1,6 @@
 // src/presentation/components/content/AdBanner.tsx
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 import { AdBanner as AdBannerType } from '../../../domain/model/HomeContent';
 import { colors } from '../../theme/colors';
 import { typography } from '../../theme/typography';
@@ -11,13 +11,27 @@ interface Props {
 
 export function AdBanner({ banner }: Props) {
   return (
-    <View style={styles.container}>
+    <View
+      style={styles.container}
+      accessible={true}
+      accessibilityRole="none"
+      accessibilityLabel={`${banner.title}. ${banner.subtitle}${banner.isAd ? '. 광고' : ''}`}
+    >
       <View style={styles.textArea}>
         <Text style={styles.title}>{banner.title}</Text>
         <Text style={styles.subtitle}>{banner.subtitle}</Text>
       </View>
       <View style={styles.imageArea}>
-        <View style={styles.imagePlaceholder} />
+        {banner.imageUrl ? (
+          <Image
+            source={{ uri: banner.imageUrl }}
+            style={styles.imagePlaceholder}
+            accessibilityRole="image"
+            accessibilityLabel={banner.title}
+          />
+        ) : (
+          <View style={styles.imagePlaceholder} />
+        )}
       </View>
       <View style={styles.bottomRow}>
         <View style={styles.indicator}>
