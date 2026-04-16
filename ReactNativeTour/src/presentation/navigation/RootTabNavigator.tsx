@@ -11,21 +11,22 @@ import { typography } from '../theme/typography';
 const Tab = createBottomTabNavigator();
 
 const TAB_ICONS: Record<string, string> = {
-  홈: '●',
+  홈: '⌂',
   카테고리: '≡',
-  검색: 'Q',
-  마이: '●',
+  검색: '⌕',
+  마이: '⊙',
 };
 
 interface TabIconProps {
   label: string;
   focused: boolean;
+  color: string;
 }
 
-function TabIcon({ label, focused }: TabIconProps) {
+function TabIcon({ label, color }: TabIconProps) {
   return (
     <View style={styles.iconContainer}>
-      <Text style={[styles.iconText, focused && styles.iconFocused]}>
+      <Text style={[styles.iconText, { color }]}>
         {TAB_ICONS[label] ?? '●'}
       </Text>
     </View>
@@ -42,8 +43,8 @@ export function RootTabNavigator() {
         tabBarActiveTintColor: colors.textPrimary,
         tabBarInactiveTintColor: colors.gnbInactive,
         tabBarLabelStyle: styles.tabLabel,
-        tabBarIcon: ({ focused }) => (
-          <TabIcon label={route.name} focused={focused} />
+        tabBarIcon: ({ focused, color }) => (
+          <TabIcon label={route.name} focused={focused} color={color} />
         ),
       })}
     >
@@ -73,9 +74,5 @@ const styles = StyleSheet.create({
   },
   iconText: {
     fontSize: 20,
-    opacity: 0.5,
-  },
-  iconFocused: {
-    opacity: 1,
   },
 });
