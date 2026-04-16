@@ -19,7 +19,6 @@ const TAB_ICONS: Record<string, string> = {
 
 interface TabIconProps {
   label: string;
-  focused: boolean;
   color: string;
 }
 
@@ -43,8 +42,8 @@ export function RootTabNavigator() {
         tabBarActiveTintColor: colors.textPrimary,
         tabBarInactiveTintColor: colors.gnbInactive,
         tabBarLabelStyle: styles.tabLabel,
-        tabBarIcon: ({ focused, color }) => (
-          <TabIcon label={route.name} focused={focused} color={color} />
+        tabBarIcon: ({ color }) => (
+          <TabIcon label={route.name} color={color} />
         ),
       })}
     >
