@@ -35,7 +35,8 @@ export class TourRepositoryImpl implements TourRepository {
     try {
       return mapToSearchDefaults(searchDefaultsData);
     } catch (error) {
-      throw new Error('검색 기본값 로딩 실패: ' + (error as Error).message);
+      const msg = error instanceof Error ? error.message : String(error);
+      throw new Error(`검색 기본값 로딩 실패: ${msg}`);
     }
   }
 }
